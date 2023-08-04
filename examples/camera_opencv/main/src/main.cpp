@@ -218,7 +218,7 @@ void opencv_ops(cv::Mat &rgb)
     cv::Mat hsv;
     cv::cvtColor(rgb, hsv, cv::COLOR_RGB2HSV);
     cv::Mat mask, mask2;
-    cv::inRange(hsv, cv::Scalar(0, 43, 46), cv::Scalar(10, 255, 255), mask);
+    // cv::inRange(hsv, cv::Scalar(0, 43, 46), cv::Scalar(10, 255, 255), mask);
     cv::inRange(hsv, cv::Scalar(156, 43, 46), cv::Scalar(180, 255, 255), mask2);
     mask = mask | mask2;
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
@@ -242,7 +242,7 @@ void opencv_ops(cv::Mat &rgb)
 
     // find green point on rgb image
     cv::Mat mask_green;
-    cv::inRange(hsv, cv::Scalar(35, 43, 46), cv::Scalar(77, 255, 255), mask_green);
+    cv::inRange(hsv, cv::Scalar(40, 43, 46), cv::Scalar(77, 230, 230), mask_green);
     cv::morphologyEx(mask_green, mask_green, cv::MORPH_OPEN, kernel);
     // find biggest contour on mask
     std::vector<std::vector<cv::Point>> contours_green;
